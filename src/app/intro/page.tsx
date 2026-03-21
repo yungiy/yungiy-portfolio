@@ -2,7 +2,7 @@ export default function IntroPage() {
 	return (
 		<section
 			id='intro'
-			className='flex flex-col items-center justify-center min-h-[90vh] text-center px-4 bg-gray-50 dark:bg-gray-900/20'
+			className='flex flex-col items-center justify-center min-h-[90vh] text-center px-4'
 		>
 			<h1 className='text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-linear-to-b from-black to-gray-500 dark:from-white dark:to-gray-500 text-transparent bg-clip-text'>
 				Passion. Action. Result.

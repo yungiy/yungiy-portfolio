@@ -65,7 +65,7 @@ const tools = [
 
 export default function SkillsPage() {
 	return (
-		<section id='skills' className='py-32 px-6 bg-gray-50 dark:bg-gray-900/20'>
+		<section id='skills' className='py-32 px-6 dark:bg-gray-900/20'>
 			<div className='max-w-4xl mx-auto'>
 				<h2 className='text-3xl md:text-4xl font-semibold mb-16 text-center'>
 					Skills
