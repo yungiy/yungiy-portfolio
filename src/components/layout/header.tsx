@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 export default function Header() {
 	const [darkMode, setDarkMode] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [activeSection, setActiveSection] = useState('intro');
 
 	useEffect(() => {
-		// 로컬 스토리지에서 테마 확인 (기본값: Light)
 		const isDark = localStorage.getItem('theme') === 'dark';
 		setDarkMode(isDark);
 		if (isDark) {
@@ -16,6 +16,37 @@ export default function Header() {
 		} else {
 			document.documentElement.classList.remove('dark');
 		}
+
+		const handleScroll = () => {
+			const sections = ['intro', 'about', 'skills', 'projects', 'contact'];
+			const scrollY = window.scrollY;
+			const offset = 150;
+
+			// 페이지 끝에 도달했을 때 contact 활성화 (마지막 섹션이 짧을 경우를 대비)
+			if (
+				window.innerHeight + window.scrollY >=
+				document.documentElement.scrollHeight - 50
+			) {
+				setActiveSection('contact');
+				return;
+			}
+
+			let current = '';
+
+			for (const id of sections) {
+				const element = document.getElementById(id);
+				if (element && element.offsetTop <= scrollY + offset) {
+					current = id;
+				}
+			}
+
+			setActiveSection(current || 'intro');
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		handleScroll(); // 초기 로드 시 실행
+
+		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
 	const toggleTheme = () => {
@@ -44,26 +75,53 @@ export default function Header() {
 
 				<nav className='hidden md:flex items-center gap-8 text-xs font-medium text-gray-600 dark:text-gray-300'>
 					<Link
-						href='#abouts'
-						className='hover:text-black dark:hover:text-white transition-colors'
+						href='#intro'
+						className={`transition-all px-3 py-1 rounded-full ${
+							activeSection === 'intro'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'hover:text-black dark:hover:text-white'
+						}`}
+					>
+						Intro
+					</Link>
+					<Link
+						href='#about'
+						className={`transition-all px-3 py-1 rounded-full ${
+							activeSection === 'about'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'hover:text-black dark:hover:text-white'
+						}`}
 					>
 						About
 					</Link>
 					<Link
-						href='#projects'
-						className='hover:text-black dark:hover:text-white transition-colors'
-					>
-						Projects
-					</Link>
-					<Link
 						href='#skills'
-						className='hover:text-black dark:hover:text-white transition-colors'
+						className={`transition-all px-3 py-1 rounded-full ${
+							activeSection === 'skills'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'hover:text-black dark:hover:text-white'
+						}`}
 					>
 						Skills
 					</Link>
 					<Link
+						href='#projects'
+						className={`transition-all px-3 py-1 rounded-full ${
+							activeSection === 'projects'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'hover:text-black dark:hover:text-white'
+						}`}
+					>
+						Projects
+					</Link>
+
+					<Link
 						href='#contact'
-						className='hover:text-black dark:hover:text-white transition-colors'
+						className={`transition-all px-3 py-1 rounded-full ${
+							activeSection === 'contact'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'hover:text-black dark:hover:text-white'
+						}`}
 					>
 						Contact
 					</Link>
@@ -189,30 +247,58 @@ export default function Header() {
 			{isMenuOpen && (
 				<div className='md:hidden absolute top-14 left-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 p-6 flex flex-col gap-6 shadow-xl animate-in slide-in-from-top-5 duration-200'>
 					<Link
+						href='#intro'
+						onClick={() => setIsMenuOpen(false)}
+						className={`text-lg font-medium transition-all px-4 py-2 rounded-lg ${
+							activeSection === 'intro'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						}`}
+					>
+						Intro
+					</Link>
+					<Link
 						href='#about'
 						onClick={() => setIsMenuOpen(false)}
-						className='text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						className={`text-lg font-medium transition-all px-4 py-2 rounded-lg ${
+							activeSection === 'about'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						}`}
 					>
 						About
 					</Link>
 					<Link
-						href='#projects'
-						onClick={() => setIsMenuOpen(false)}
-						className='text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
-					>
-						Projects
-					</Link>
-					<Link
 						href='#skills'
 						onClick={() => setIsMenuOpen(false)}
-						className='text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						className={`text-lg font-medium transition-all px-4 py-2 rounded-lg ${
+							activeSection === 'skills'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						}`}
 					>
 						Skills
 					</Link>
 					<Link
+						href='#projects'
+						onClick={() => setIsMenuOpen(false)}
+						className={`text-lg font-medium transition-all px-4 py-2 rounded-lg ${
+							activeSection === 'projects'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						}`}
+					>
+						Projects
+					</Link>
+
+					<Link
 						href='#contact'
 						onClick={() => setIsMenuOpen(false)}
-						className='text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						className={`text-lg font-medium transition-all px-4 py-2 rounded-lg ${
+							activeSection === 'contact'
+								? 'bg-gray-100 dark:bg-gray-800 text-black dark:text-white font-bold'
+								: 'text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white'
+						}`}
 					>
 						Contact
 					</Link>
