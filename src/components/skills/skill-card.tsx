@@ -1,18 +1,4 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'framer-motion';
-
-const itemVariants = {
-	hidden: { opacity: 0, y: 20 },
-	visible: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.5,
-		},
-	},
-};
 
 interface Props {
 	name: string;
@@ -21,18 +7,13 @@ interface Props {
 
 export function SkillCard({ name, icon: Icon }: Props) {
 	return (
-		<motion.div
-			variants={itemVariants}
-			className='group relative w-64 p-4 bg-white/50 dark:bg-gray-800/30 backdrop-blur-md rounded-2xl border border-gray-200/60 dark:border-gray-700/60 shadow-sm flex flex-row items-center transition-all duration-300 md:w-44 md:h-48 md:p-6 md:flex-col md:justify-center hover:shadow-xl hover:bg-white dark:hover:bg-gray-800 hover:-translate-y-1'
-		>
-			<div className='absolute inset-0 from-gray-50/50 to-gray-100/50 dark:from-gray-800/50 dark:to-gray-900/50 opacity-0 group-hover:opacity-100 transition-opacity' />
-
-			<div className='relative z-10 shrink-0 mr-4 text-4xl text-gray-600 dark:text-gray-400 transition-all duration-300 md:mr-0 md:mb-5 group-hover:scale-110 group-hover:text-black dark:group-hover:text-white'>
+		<div className='w-64 md:w-44 md:h-48 p-5 md:p-6 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:shadow-md dark:hover:bg-white/10 transition-all duration-300 flex flex-row md:flex-col items-center md:justify-center gap-4 md:gap-5'>
+			<div className='w-12 h-12 md:w-14 md:h-14 rounded-full bg-white dark:bg-white/5 shadow-sm border border-gray-100 dark:border-white/10 flex items-center justify-center text-2xl md:text-3xl text-gray-700 dark:text-gray-200 shrink-0'>
 				<Icon />
 			</div>
-			<h4 className='relative z-10 text-lg font-semibold text-left text-gray-600 md:text-center dark:text-gray-400 transition-colors duration-300 group-hover:text-black dark:group-hover:text-white'>
+			<h4 className='text-base md:text-lg font-bold text-gray-900 dark:text-white text-left md:text-center w-full md:w-auto'>
 				{name}
 			</h4>
-		</motion.div>
+		</div>
 	);
 }

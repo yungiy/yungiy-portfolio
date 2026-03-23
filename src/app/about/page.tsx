@@ -1,3 +1,58 @@
+import { CompetenceCard } from '@/src/components/about/competence-card';
+import { ExperienceItem } from '@/src/components/about/experience-item';
+
+const competences = [
+	{
+		icon: '💻',
+		title: 'Frontend Development',
+		descriptions: [
+			'React와 Next.js 생태계를 활용하여 안정적이고 반응형인 웹 사용자 인터페이스를 구축합니다.',
+			'재사용 가능하고 유지보수하기 좋은 컴포넌트를 설계하여 장기적인 생산성 향상을 지향합니다.',
+		],
+	},
+	{
+		icon: '🤝',
+		title: 'Collaboration & Quality',
+		descriptions: [
+			'인프라 엔지니어 및 PM/QA 인턴 경험을 통해 기획부터 배포까지 서비스의 전체 라이프사이클을 이해합니다.',
+			'요구사항의 본질을 파악하고 기획/디자인 직군과 원활하게 소통하며, 꼼꼼한 테스트로 프로덕트 완성도를 높입니다.',
+		],
+	},
+];
+
+const experiences = [
+	{
+		company: '하몬소프트',
+		role: '네트워크망 구축',
+		period: '2024.12 (1개월)',
+		descriptions: [
+			'보안관제 솔루션을 서비스하는 회사로 개발팀 업무를 보조',
+			'각 사이트마다 있는 전산망 정리 및 신규 사이트 전산망 구축 보조',
+			'리눅스 기반으로 각종 로우 레벨 프로그램을 활용',
+		],
+	},
+	{
+		company: '모노브레인',
+		role: 'PM, QA 경험',
+		period: '2024.05 ~ 2024.07 (3개월)',
+		descriptions: [
+			'html CSS, React를 활용해 전자교과서를 개발하는 회사',
+			'프로젝트 단위로 각 고객사와 미팅 후 프로젝트 매니징 업무 보조 및 문서관리',
+			'피그마, 엑셀을 활용한 QA 경험 및 OA 경험',
+		],
+	},
+	{
+		company: '비주얼샤워',
+		role: '웹 개발 경험',
+		period: '2022.04 ~ 2022.07 (3개월)',
+		descriptions: [
+			'타입스크립트와 리액트를 기반으로 암호화폐 플랫폼 개발',
+			'MUI를 통한 CSS 스타일링 및 퍼블리싱 경험, Redux를 통한 전역상태관리 경험',
+			'php 기반 코드 이그나이터를 활용한 백엔드 개발 경험 및 자사 홈페이지 구조 개선 방안 도출',
+		],
+	},
+];
+
 export default function AboutPage() {
 	return (
 		<section id='about' className='py-32 px-6'>
@@ -44,58 +99,20 @@ export default function AboutPage() {
 
 					{/* 하단: 핵심 역량 그리드 - 2열 배치 */}
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl text-left'>
-						<div className='p-6 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:shadow-md dark:hover:bg-white/10 transition-all duration-300'>
-							<div className='flex items-center gap-3 mb-4 text-blue-600 dark:text-blue-400'>
-								<div className='w-10 h-10 rounded-full bg-blue-100/50 dark:bg-blue-500/20 flex items-center justify-center text-xl'>
-									💻
-								</div>
-								<h4 className='text-lg font-bold text-gray-900 dark:text-white'>
-									Frontend Development
-								</h4>
-							</div>
-							<ul className='space-y-2.5 text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed break-keep'>
-								<li className='flex gap-2.5'>
-									<span className='text-blue-500 mt-0.5'>•</span>
-									<span>
-										React와 Next.js 생태계를 활용하여 안정적이고 반응형인 웹
-										사용자 인터페이스를 구축합니다.
-									</span>
-								</li>
-								<li className='flex gap-2.5'>
-									<span className='text-blue-500 mt-0.5'>•</span>
-									<span>
-										재사용 가능하고 유지보수하기 좋은 컴포넌트를 설계하여
-										장기적인 생산성 향상을 지향합니다.
-									</span>
-								</li>
-							</ul>
-						</div>
+						{competences.map((comp, index) => (
+							<CompetenceCard key={index} {...comp} />
+						))}
+					</div>
 
-						<div className='p-6 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:shadow-md dark:hover:bg-white/10 transition-all duration-300'>
-							<div className='flex items-center gap-3 mb-4 text-blue-600 dark:text-blue-400'>
-								<div className='w-10 h-10 rounded-full bg-blue-100/50 dark:bg-blue-500/20 flex items-center justify-center text-xl'>
-									🤝
-								</div>
-								<h4 className='text-lg font-bold text-gray-900 dark:text-white'>
-									Collaboration & Quality
-								</h4>
-							</div>
-							<ul className='space-y-2.5 text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed break-keep'>
-								<li className='flex gap-2.5'>
-									<span className='text-blue-500 mt-0.5'>•</span>
-									<span>
-										인프라 엔지니어 및 PM/QA 인턴 경험을 통해 기획부터 배포까지
-										서비스의 전체 라이프사이클을 이해합니다.
-									</span>
-								</li>
-								<li className='flex gap-2.5'>
-									<span className='text-blue-500 mt-0.5'>•</span>
-									<span>
-										요구사항의 본질을 파악하고 기획/디자인 직군과 원활하게
-										소통하며, 꼼꼼한 테스트로 프로덕트 완성도를 높입니다.
-									</span>
-								</li>
-							</ul>
+					{/* 하단: 경력 (Work Experience) */}
+					<div className='w-full max-w-4xl mt-24 text-left'>
+						<h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-12 text-center'>
+							직무경험
+						</h3>
+						<div className='relative border-l-2 border-gray-100 dark:border-white/10 ml-4 md:ml-6 space-y-8 md:space-y-12 py-2'>
+							{experiences.map((exp, index) => (
+								<ExperienceItem key={index} {...exp} />
+							))}
 						</div>
 					</div>
 				</div>
