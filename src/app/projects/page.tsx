@@ -41,9 +41,12 @@ export default function ProjectPage() {
 
 	return (
 		<section id='projects' className='py-32 px-6 max-w-6xl mx-auto'>
-			<h2 className='text-3xl md:text-5xl font-semibold mb-16 text-center'>
-				Projects
-			</h2>
+			<div className='text-center mb-16 tracking-tight'>
+				<h2 className='text-3xl md:text-5xl font-semibold mb-4'>Projects</h2>
+				<p className='text-gray-500 dark:text-gray-400 text-sm md:text-base break-keep'>
+					데스크탑과 모바일 환경 모두에서 편안하게 확인하실 수 있습니다.
+				</p>
+			</div>
 
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 				{projects.map((project) => (

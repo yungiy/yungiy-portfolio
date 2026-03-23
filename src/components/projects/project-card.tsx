@@ -1,5 +1,5 @@
-import React from 'react';
 import Image from 'next/image';
+import { Button } from '@/src/components/layout/button';
 
 export interface Demo {
 	label: string;
@@ -33,29 +33,37 @@ export function ProjectCard({ project, onSelectMedia }: ProjectCardProps) {
 				/>
 			</div>
 
-			{/* Hover Overlay */}
-			<div className='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-20'>
-				<a
+			{/* Hover Overlay: 모바일에서 flex-col, 데스크탑에서 flex-row 적용 */}
+			<div className='absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col md:flex-row items-center justify-center gap-2 sm:gap-4 z-20 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto p-4'>
+				{/* 데모 버튼들: 모바일에서 order-1로 설정하여 상단 배치 */}
+				<div className='flex flex-wrap justify-center gap-2 order-1 md:order-2'>
+					{project.demos.map((demo, index) => (
+						<Button
+							key={index}
+							onClick={() =>
+								demo.isPdf || demo.isVideo
+									? onSelectMedia(demo)
+									: window.open(demo.url, '_blank')
+							}
+							variant='blue'
+							size='sm'
+						>
+							{demo.label}
+						</Button>
+					))}
+				</div>
+
+				{/* GitHub 버튼: 모바일에서 order-2로 설정하여 하단 배치 */}
+				<Button
 					href={project.githubUrl}
 					target='_blank'
 					rel='noopener noreferrer'
-					className='px-6 py-2 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors text-sm'
+					variant='white'
+					size='sm'
+					className='order-2 md:order-1'
 				>
 					GitHub
-				</a>
-				{project.demos.map((demo, index) => (
-					<button
-						key={index}
-						onClick={() =>
-							demo.isPdf || demo.isVideo
-								? onSelectMedia(demo)
-								: window.open(demo.url, '_blank')
-						}
-						className='px-6 py-2 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors text-sm cursor-pointer'
-					>
-						{demo.label}
-					</button>
-				))}
+				</Button>
 			</div>
 
 			<div className='absolute bottom-0 left-0 right-0 p-8 bg-linear-to-t from-black/90 via-black/50 to-transparent z-10 pointer-events-none'>

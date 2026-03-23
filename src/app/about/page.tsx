@@ -1,3 +1,4 @@
+import { Button } from '@/src/components/layout/button';
 import { CompetenceCard } from '@/src/components/about/competence-card';
 import { ExperienceItem } from '@/src/components/about/experience-item';
 
@@ -65,36 +66,30 @@ export default function AboutPage() {
 				</div>
 
 				<div className='flex flex-col items-center'>
-					{/* 상단: 프로필 이미지 및 이름 */}
-					<div className='flex flex-col items-center text-center mb-12'>
-						<div className='relative group'>
-							<div className='relative w-56 h-56 md:w-72 md:h-72 bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden border-4 border-white dark:border-black shadow-lg'>
-								{/* 실제 이미지를 넣으실 때는 <img src="..." alt="양윤기 프로필" /> 로 교체하세요 */}
-								<div className='w-full h-full flex items-center justify-center text-gray-400'>
-									Your Photo
-								</div>
-							</div>
-						</div>
-						<div className='mt-8'>
-							<h3 className='text-3xl font-bold text-gray-900 dark:text-white'>
-								양윤기
-							</h3>
-						</div>
-					</div>
-
 					{/* 중단: 역량 소개 요약 */}
 					<div className='w-full max-w-3xl text-center space-y-6 mb-16'>
-						<p className='text-2xl md:text-3xl font-medium text-gray-800 dark:text-gray-200 leading-snug break-keep'>
+						<p className='text-2xl md:text-3xl font-medium text-gray-800 dark:text-gray-200 leading-relaxed break-keep tracking-tight'>
 							&quot;다양한 직무 경험을 바탕으로,{' '}
 							<br className='hidden md:block' />
 							팀에 자연스럽게 녹아드는 프론트엔드 개발자입니다.&quot;
 						</p>
-						<p className='text-gray-600 dark:text-gray-400 leading-relaxed break-keep text-base md:text-lg'>
+						<p className='text-gray-600 dark:text-gray-400 leading-loose break-keep text-base md:text-lg tracking-tight'>
 							인프라 엔지니어와 PM/QA 인턴으로 일하며 서비스가 기획, 배포되는
-							전체 과정을 경험했습니다. 이러한 경험을 바탕으로 다른 직무의
-							동료들과 원활하게 소통하며, 단순한 화면 구현을 넘어 비즈니스
-							요구사항과 시스템의 안정성까지 함께 고민하는 개발을 지향합니다.
+							전체 과정을 경험했습니다. <br className='hidden sm:block' />
+							이러한 경험을 바탕으로 동료들과 원활하게 소통하며, 단순한 화면
+							구현을 넘어 비즈니스 요구사항과 시스템의 안정성까지 함께 고민하는
+							개발을 지향합니다.
 						</p>
+						<div className='pt-4'>
+							<Button
+								href='/resume.pdf'
+								target='_blank'
+								rel='noreferrer'
+								variant='blue'
+							>
+								이력서 보기
+							</Button>
+						</div>
 					</div>
 
 					{/* 하단: 핵심 역량 그리드 - 2열 배치 */}
