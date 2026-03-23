@@ -1,10 +1,11 @@
 'use client';
 
+import { useActiveSection } from '@/src/app/hooks/use-active-section';
 import { useTheme } from '@/src/app/hooks/use-theme';
 import Link from 'next/link';
-import { useEffect, useState, useMemo } from 'react';
+import { useState } from 'react';
 
-// 1. 네비게이션 데이터 상수화
+// 네비게이션 데이터 상수화
 const NAV_ITEMS = [
 	{ id: 'intro', label: 'Intro' },
 	{ id: 'about', label: 'About' },
@@ -12,42 +13,14 @@ const NAV_ITEMS = [
 	{ id: 'projects', label: 'Projects' },
 	{ id: 'contact', label: 'Contact' },
 ];
+const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
 
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [activeSection, setActiveSection] = useState('intro');
+	const activeSection = useActiveSection(SECTION_IDS);
 	const { theme, toggleTheme, mounted } = useTheme();
 
-	// 2. 스크롤 핸들러 최적화
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollY = window.scrollY;
-			const offset = 150;
-
-			// 하단 도달 체크
-			const isAtBottom =
-				window.innerHeight + scrollY >=
-				document.documentElement.scrollHeight - 50;
-			if (isAtBottom) {
-				setActiveSection('contact');
-				return;
-			}
-
-			// 현재 섹션 찾기 (역순으로 체크하여 가장 위에 있는 활성 섹션 선택)
-			const currentSection = [...NAV_ITEMS].reverse().find((item) => {
-				const element = document.getElementById(item.id);
-				return element && element.offsetTop <= scrollY + offset;
-			});
-
-			setActiveSection(currentSection?.id || 'intro');
-		};
-
-		window.addEventListener('scroll', handleScroll);
-		handleScroll();
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
-
-	// 3. 공통 스타일 및 테마 아이콘 정의
+	// 공통 스타일 및 테마 아이콘 정의
 	const getNavLinkClass = (id: string, isMobile = false) => {
 		const baseClass = isMobile
 			? 'text-lg font-medium px-4 py-2 rounded-lg'

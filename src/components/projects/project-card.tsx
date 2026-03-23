@@ -33,9 +33,7 @@ export function ProjectCard({ project, onSelectMedia }: ProjectCardProps) {
 				/>
 			</div>
 
-			{/* Hover Overlay: 모바일에서 flex-col, 데스크탑에서 flex-row 적용 */}
 			<div className='absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col md:flex-row items-center justify-center gap-2 sm:gap-4 z-20 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto p-4'>
-				{/* 데모 버튼들: 모바일에서 order-1로 설정하여 상단 배치 */}
 				<div className='flex flex-wrap justify-center gap-2 order-1 md:order-2'>
 					{project.demos.map((demo, index) => (
 						<Button
@@ -53,7 +51,6 @@ export function ProjectCard({ project, onSelectMedia }: ProjectCardProps) {
 					))}
 				</div>
 
-				{/* GitHub 버튼: 모바일에서 order-2로 설정하여 하단 배치 */}
 				<Button
 					href={project.githubUrl}
 					target='_blank'
