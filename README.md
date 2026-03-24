@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👨‍💻 Yungiy Portfolio
 
-## Getting Started
+프론트엔드 개발자 **양윤기**의 개인 포트폴리오 웹사이트입니다.
 
-First, run the development server:
+## 🔗 Link
+
+[배포된 사이트 보러가기 (yungiy-portfolio.vercel.app)](https://yungiy-portfolio.vercel.app)
+
+## ✨ 주요 기능 (Features)
+
+- **반응형 디자인:** 모바일, 태블릿, 데스크탑 환경에 맞춘 최적화된 UI 제공.
+- **다크 모드:** 사용자 시스템 설정 감지 및 수동 토글 기능 지원 (상태 LocalStorage 저장).
+- **인터랙티브 UI:**
+  - 시작 화면 타이핑 애니메이션 효과
+  - 스크롤 위치에 따른 네비게이션 탭 자동 하이라이팅 (`useActiveSection` Hook)
+- **프로젝트 모달 뷰어:** PDF 발표 자료 및 시연 영상을 페이지 이동 없이 모달 내에서 바로 확인 가능.
+
+## 🛠 기술 스택 (Tech Stack)
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+
+## 🚀 로컬 실행 방법 (Getting Started)
+
+프로젝트를 로컬 환경에서 실행하려면 아래 명령어를 입력하세요.
 
 ```bash
+# 패키지 설치
+npm install
+
+# 개발 서버 실행
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
