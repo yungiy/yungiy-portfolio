@@ -4,24 +4,51 @@ import { ExperienceItem } from '@/src/components/about/experience-item';
 
 const competences = [
 	{
-		icon: '💻',
-		title: 'Frontend Development',
+		icon: '⚡',
+		title: 'EOL & Hot Testing',
 		descriptions: [
-			'React와 Next.js 생태계를 활용하여 안정적이고 반응형인 웹 사용자 인터페이스를 구축합니다.',
-			'재사용 가능하고 유지보수하기 좋은 컴포넌트를 설계하여 장기적인 생산성 향상을 지향합니다.',
+			'생산 및 검사 라인에서 핫테스트(Hot Test)와 EOL(End of Line) 테스트를 수행하며 전장부품의 실동작 상태를 검증해본 경험이 있습니다.',
+			'C#, C++, LabVIEW를 활용해 MDPS, iMEB 등 전장부품 검사장비의 계측·제어 SW를 다뤄보았습니다.',
 		],
 	},
 	{
-		icon: '🤝',
-		title: 'Collaboration & Quality',
+		icon: '📡',
+		title: 'Vehicle Protocols',
 		descriptions: [
-			'인프라 엔지니어 및 PM/QA 인턴 경험을 통해 기획부터 배포까지 서비스의 전체 라이프사이클을 이해합니다.',
-			'요구사항의 본질을 파악하고 기획/디자인 직군과 원활하게 소통하며, 꼼꼼한 테스트로 프로덕트 완성도를 높입니다.',
+			'CAN 통신 기반의 ECU 신호 계측과 UDS, XCP 프로토콜을 활용한 차량 제어·진단 로직을 다뤄보았습니다.',
+			'모터 다이나모 및 시험설비 환경에서 제어기와 전장부품 간의 신호 흐름과 통신 상태를 검증했습니다.',
+		],
+	},
+	{
+		icon: '🏭',
+		title: 'PLC & Automation',
+		descriptions: [
+			'PLC 및 각종 계측기·제어기 연동을 통해 검사 라인의 자동검사 로직을 다루고 현장 설비 인터페이스를 경험했습니다.',
+			'라인 운용 과정에서 발생하는 하드웨어 동작 오류와 신호 예외 상황을 디버깅해본 경험이 있습니다.',
+		],
+	},
+	{
+		icon: '🔍',
+		title: 'OS & Troubleshooting',
+		descriptions: [
+			'Linux 환경에서 로우레벨 프로그램을 다루며 시스템과 네트워크 제어의 동작 구조를 접해보았습니다.',
+			'테스트 및 QA 경험을 바탕으로, 검사 라인에서 발생하는 소프트웨어 및 제어·통신 오류의 원인을 체계적으로 추적합니다.',
 		],
 	},
 ];
 
 const experiences = [
+	{
+		company: '신호시스템',
+		role: 'EOL 계측 SW 개발 및 테스트',
+		period: '2026.04 ~ 2026.07 (4개월)',
+		descriptions: [
+			'LabVIEW, C# 기반 iMEB, MDPS 전장부품 EOL 라인검사장비 계측, 제어 SW 개발 및 테스트',
+			'CAN 통신 기반 ECU 신호 계측 및 UDS, XCP 프로토콜을 활용한 차량 제어, 진단 기능 구현',
+			'PLC 및 계측기·제어기 연동을 통한 생산라인 자동검사 로직 구현 및 설비 디버깅',
+			'모터 다이나모 및 전장 시험설비를 활용한 MDPS 기능검사와 측정 데이터 분석 경험',
+		],
+	},
 	{
 		company: '하몬소프트',
 		role: '네트워크망 구축',
@@ -71,14 +98,14 @@ export default function AboutPage() {
 						<p className='text-2xl md:text-3xl font-medium text-gray-800 dark:text-gray-200 leading-relaxed break-keep tracking-tight'>
 							&quot;다양한 직무 경험을 바탕으로,{' '}
 							<br className='hidden md:block' />
-							팀에 자연스럽게 녹아드는 프론트엔드 개발자입니다.&quot;
+							팀에 자연스럽게 녹아드는 SW 엔지니어입니다.&quot;
 						</p>
 						<p className='text-gray-600 dark:text-gray-400 leading-loose break-keep text-base md:text-lg tracking-tight'>
-							인프라 엔지니어와 PM/QA 인턴으로 일하며 서비스가 기획, 배포되는
-							전체 과정을 경험했습니다. <br className='hidden sm:block' />
-							이러한 경험을 바탕으로 동료들과 원활하게 소통하며, 단순한 화면
-							구현을 넘어 비즈니스 요구사항과 시스템의 안정성까지 함께 고민하는
-							개발을 지향합니다.
+							핫테스트·EOL 검사와 PM/QA, 인프라 경험을 통해 현장의 전체적인
+							흐름을 접해보았습니다. <br className='hidden sm:block' />
+							이러한 경험을 바탕으로 현장 설비 및 제어 신호에 대한 이해를
+							넓히고, 하드웨어와 소프트웨어 간 예외 상황을 체계적으로 추적하여
+							시스템의 안정성을 높이는 개발을 지향합니다.
 						</p>
 						<div className='pt-4'>
 							<Button

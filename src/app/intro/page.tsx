@@ -21,7 +21,7 @@ export default function IntroPage() {
 			<p className='text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed break-keep'>
 				다양한 직무 경험을 바탕으로, <br className='md:hidden' />
 				프로덕트의 완성도와 안정적인 성장을 지탱하는
-				<br className='md:hidden' /> 개발자 양윤기입니다.
+				<br className='md:hidden' /> SW 엔지니어 양윤기입니다.
 			</p>
 		</section>
 	);
