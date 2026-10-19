@@ -2,3 +2,41 @@
 
 /* 다크모드 설정 */
 @custom-variant dark (&:where(.dark, .dark *));
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+}
+
+@layer components {
+	.page-shell {
+		@apply mx-auto w-full max-w-6xl px-6;
+	}
+
+	.page-section {
+		@apply scroll-mt-14 border-t border-gray-200 py-16 md:py-24 dark:border-gray-800;
+	}
+
+	.section-heading {
+		@apply mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between md:mb-12;
+	}
+
+	.section-title {
+		@apply text-3xl font-bold tracking-tight text-gray-900 md:text-4xl dark:text-white;
+	}
+
+	.section-number {
+		@apply font-mono text-sm font-medium text-blue-600 dark:text-blue-400;
+	}
+
+	.section-description {
+		@apply max-w-2xl text-sm leading-7 text-gray-600 break-keep md:text-base dark:text-gray-400;
+	}
+}

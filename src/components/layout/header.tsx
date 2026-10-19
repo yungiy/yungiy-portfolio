@@ -8,9 +8,9 @@ import { useState } from 'react';
 // 네비게이션 데이터 상수화
 const NAV_ITEMS = [
 	{ id: 'intro', label: 'Intro' },
-	{ id: 'about', label: 'About' },
-	{ id: 'skills', label: 'Skills' },
+	{ id: 'about', label: 'Experience' },
 	{ id: 'projects', label: 'Projects' },
+	{ id: 'skills', label: 'Skills' },
 	{ id: 'contact', label: 'Contact' },
 ];
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);

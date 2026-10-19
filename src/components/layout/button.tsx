@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 
 type ButtonVariant = 'solid' | 'subtle' | 'outline' | 'blue' | 'white' | 'dark';
 type ButtonSize = 'default' | 'sm';
@@ -30,19 +30,18 @@ export function Button({
 	...props
 }: ButtonProps) {
 	const baseStyles =
-		'inline-flex items-center justify-center rounded-full transition-all duration-200 whitespace-nowrap cursor-pointer';
+		'inline-flex items-center justify-center gap-2 rounded-xl whitespace-nowrap cursor-pointer text-sm font-medium tracking-tight transition-[background-color,border-color,transform] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-black';
 
 	const sizes = {
-		default:
-			'px-4 py-3.5 sm:px-8 sm:py-4 font-medium text-sm sm:text-base hover:-translate-y-0.5',
-		sm: 'px-6 py-2 text-sm font-semibold',
+		default: 'min-h-12 px-5',
+		sm: 'min-h-10 px-4',
 	};
 
 	const variants = {
 		solid: 'bg-gray-900 text-white dark:bg-white dark:text-gray-900',
 		subtle: 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white',
 		outline:
-			'bg-transparent text-gray-900 border border-gray-300 dark:text-white dark:border-gray-700',
+			'border border-gray-300 bg-transparent text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:text-white dark:hover:bg-gray-900',
 		blue: 'bg-blue-600 text-white hover:bg-blue-700',
 		white: 'bg-white text-black hover:bg-gray-200',
 		dark: 'bg-gray-800 text-white hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600',

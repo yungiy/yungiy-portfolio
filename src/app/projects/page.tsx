@@ -1,10 +1,11 @@
 'use client';
 
+import { SectionHeading } from '@/src/components/layout/section-heading';
 import { MediaModal } from '@/src/components/projects/media-modal';
 import {
-	Demo,
+	type Demo,
 	ProjectCard,
-	Project,
+	type Project,
 } from '@/src/components/projects/project-card';
 
 import { useState } from 'react';
@@ -40,13 +41,8 @@ export default function ProjectPage() {
 	const [selectedMedia, setSelectedMedia] = useState<Demo | null>(null);
 
 	return (
-		<section id='projects' className='py-32 px-6 max-w-6xl mx-auto'>
-			<div className='text-center mb-16 tracking-tight'>
-				<h2 className='text-3xl md:text-5xl font-semibold mb-4'>Projects</h2>
-				<p className='text-gray-500 dark:text-gray-400 text-sm md:text-base break-keep'>
-					데스크탑과 모바일 환경 모두에서 편안하게 확인하실 수 있습니다.
-				</p>
-			</div>
+		<section id='projects' className='page-shell page-section'>
+			<SectionHeading number='02' title='Projects' description='웹 개발 프로젝트의 구현 결과와 시연 자료입니다. 차량 SW 검증 경력과 함께 다양한 개발 경험을 보여줍니다.' />
 
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 				{projects.map((project) => (

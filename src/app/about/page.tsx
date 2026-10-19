@@ -1,43 +1,18 @@
-import { Button } from '@/src/components/layout/button';
-import { CompetenceCard } from '@/src/components/about/competence-card';
 import { ExperienceItem } from '@/src/components/about/experience-item';
-
-const competences = [
-	{
-		icon: '⚡',
-		title: 'EOL & Hot Testing',
-		descriptions: [
-			'생산 및 검사 라인에서 핫테스트(Hot Test)와 EOL(End of Line) 테스트를 수행하며 전장부품의 실동작 상태를 검증해본 경험이 있습니다.',
-			'C#, C++, LabVIEW를 활용해 MDPS, iMEB 등 전장부품 검사장비의 계측·제어 SW를 다뤄보았습니다.',
-		],
-	},
-	{
-		icon: '📡',
-		title: 'Vehicle Protocols',
-		descriptions: [
-			'CAN 통신 기반의 ECU 신호 계측과 UDS, XCP 프로토콜을 활용한 차량 제어·진단 로직을 다뤄보았습니다.',
-			'모터 다이나모 및 시험설비 환경에서 제어기와 전장부품 간의 신호 흐름과 통신 상태를 검증했습니다.',
-		],
-	},
-	{
-		icon: '🏭',
-		title: 'PLC & Automation',
-		descriptions: [
-			'PLC 및 각종 계측기·제어기 연동을 통해 검사 라인의 자동검사 로직을 다루고 현장 설비 인터페이스를 경험했습니다.',
-			'라인 운용 과정에서 발생하는 하드웨어 동작 오류와 신호 예외 상황을 디버깅해본 경험이 있습니다.',
-		],
-	},
-	{
-		icon: '🔍',
-		title: 'OS & Troubleshooting',
-		descriptions: [
-			'Linux 환경에서 로우레벨 프로그램을 다루며 시스템과 네트워크 제어의 동작 구조를 접해보았습니다.',
-			'테스트 및 QA 경험을 바탕으로, 검사 라인에서 발생하는 소프트웨어 및 제어·통신 오류의 원인을 체계적으로 추적합니다.',
-		],
-	},
-];
+import { SectionHeading } from '@/src/components/layout/section-heading';
 
 const experiences = [
+	{
+		company: '인피닉',
+		role: 'OTA 기능 검증 및 테스트 자동화',
+		period: '재직 중',
+		descriptions: [
+			'Test Case 기반 OTA 기능 검증 및 Quick, Full, Acceptance Test 수행과 결과 보고',
+			'CAN 통신 및 DLT·CAN 로그 분석을 통한 ECU·DCU 통신 검증, Defect 재현과 원인 분석',
+			'테스트 자동화 스크립트 개발 및 시험 결과 자동 수집',
+			'CR(Change Request) 검증과 변경점 분석 및 원청 협업',
+		],
+	},
 	{
 		company: '신호시스템',
 		role: 'EOL 계측 SW 개발 및 테스트',
@@ -83,61 +58,14 @@ const experiences = [
 
 export default function AboutPage() {
 	return (
-		<section id='about' className='py-32 px-6'>
-			<div className='max-w-5xl mx-auto'>
-				{/* 섹션 헤더 */}
-				<div className='text-center mb-16'>
-					<h2 className='text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white'>
-						About Me
-					</h2>
-				</div>
-
-				<div className='flex flex-col items-center'>
-					{/* 중단: 역량 소개 요약 */}
-					<div className='w-full max-w-3xl text-center space-y-6 mb-16'>
-						<p className='text-2xl md:text-3xl font-medium text-gray-800 dark:text-gray-200 leading-relaxed break-keep tracking-tight'>
-							&quot;다양한 직무 경험을 바탕으로,{' '}
-							<br className='hidden md:block' />
-							팀에 자연스럽게 녹아드는 SW 엔지니어입니다.&quot;
-						</p>
-						<p className='text-gray-600 dark:text-gray-400 leading-loose break-keep text-base md:text-lg tracking-tight'>
-							핫테스트·EOL 검사와 PM/QA, 인프라 경험을 통해 현장의 전체적인
-							흐름을 접해보았습니다. <br className='hidden sm:block' />
-							이러한 경험을 바탕으로 현장 설비 및 제어 신호에 대한 이해를
-							넓히고, 하드웨어와 소프트웨어 간 예외 상황을 체계적으로 추적하여
-							시스템의 안정성을 높이는 개발을 지향합니다.
-						</p>
-						<div className='pt-4'>
-							<Button
-								href='/resume.pdf'
-								target='_blank'
-								rel='noreferrer'
-								variant='blue'
-							>
-								이력서 보기
-							</Button>
-						</div>
-					</div>
-
-					{/* 하단: 핵심 역량 그리드 - 2열 배치 */}
-					<div className='grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl text-left'>
-						{competences.map((comp, index) => (
-							<CompetenceCard key={index} {...comp} />
-						))}
-					</div>
-
-					{/* 하단: 경력 (Work Experience) */}
-					<div className='w-full max-w-4xl mt-24 text-left'>
-						<h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-12 text-center'>
-							직무경험
-						</h3>
-						<div className='relative border-l-2 border-gray-100 dark:border-white/10 ml-4 md:ml-6 space-y-8 md:space-y-12 py-2'>
-							{experiences.map((exp, index) => (
-								<ExperienceItem key={index} {...exp} />
-							))}
-						</div>
-					</div>
-				</div>
+		<section id='about' className='page-shell page-section'>
+			<SectionHeading
+				number='01'
+				title='Experience'
+				description='차량 OTA 기능과 전장부품 EOL 검사를 경험했습니다. 테스트 케이스, 통신 로그, 계측 데이터를 바탕으로 문제를 재현하고 원인을 분석합니다.'
+			/>
+			<div className='divide-y divide-gray-200 border-y border-gray-200 dark:divide-gray-800 dark:border-gray-800'>
+				{experiences.map((experience) => <ExperienceItem key={experience.company} {...experience} />)}
 			</div>
 		</section>
 	);

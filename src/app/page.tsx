@@ -11,10 +11,10 @@ export default function Home() {
 			<IntroPage />
 			{/* about */}
 			<AboutPage />
-			{/* skills */}
-			<SkillsPage />
 			{/* projects */}
 			<ProjectPage />
+			{/* skills */}
+			<SkillsPage />
 			{/* contact */}
 			<ContactPage />
 		</main>

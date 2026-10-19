@@ -23,52 +23,36 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, onSelectMedia }: ProjectCardProps) {
 	return (
-		<div className='group relative bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden aspect-4/3 border border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-500'>
-			<div className='absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600 group-hover:scale-105 transition-transform duration-700'>
+		<article className='overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg dark:border-gray-800 dark:bg-gray-950'>
+			<div className='relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900'>
 				<Image
 					src={project.image}
-					alt={`${project.title} Project Thumbnail`}
+					alt={`${project.title} 프로젝트 화면`}
 					fill
-					className='object-cover'
+					className='object-cover transition-transform duration-500 hover:scale-[1.03]'
+					sizes='(max-width: 768px) 100vw, 50vw'
 				/>
 			</div>
-
-			<div className='absolute inset-0 bg-black/60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col md:flex-row items-center justify-center gap-2 sm:gap-4 z-20 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto p-4'>
-				<div className='flex flex-wrap justify-center gap-2 order-1 md:order-2'>
-					{project.demos.map((demo, index) => (
+			<div className='p-6 md:p-8'>
+				<p className='mb-2 font-mono text-xs font-medium text-blue-600 dark:text-blue-400'>WEB PROJECT</p>
+				<h3 className='text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>{project.title}</h3>
+				<p className='mt-3 min-h-12 text-sm leading-6 text-gray-600 break-keep dark:text-gray-400'>{project.description}</p>
+				<div className='mt-6 flex flex-wrap gap-2'>
+					{project.demos.map((demo) => (
 						<Button
-							key={index}
-							onClick={() =>
-								demo.isPdf || demo.isVideo
-									? onSelectMedia(demo)
-									: window.open(demo.url, '_blank')
-							}
-							variant='blue'
+							key={demo.label}
+							onClick={() => onSelectMedia(demo)}
+							variant='outline'
 							size='sm'
 						>
 							{demo.label}
 						</Button>
 					))}
+					<Button href={project.githubUrl} target='_blank' rel='noopener noreferrer' variant='blue' size='sm'>
+						GitHub ↗
+					</Button>
 				</div>
-
-				<Button
-					href={project.githubUrl}
-					target='_blank'
-					rel='noopener noreferrer'
-					variant='white'
-					size='sm'
-					className='order-2 md:order-1'
-				>
-					GitHub
-				</Button>
 			</div>
-
-			<div className='absolute bottom-0 left-0 right-0 p-8 bg-linear-to-t from-black/90 via-black/50 to-transparent z-10 pointer-events-none'>
-				<h3 className='text-2xl font-bold text-white mb-2'>{project.title}</h3>
-				<p className='text-gray-300 text-sm break-keep'>
-					{project.description}
-				</p>
-			</div>
-		</div>
+		</article>
 	);
 }
